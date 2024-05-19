@@ -1,5 +1,4 @@
 from fastapi import FastAPI
-from scrapper import get_imdb_top_250
 from db import AppDb
 
 app = FastAPI()
@@ -17,4 +16,5 @@ def get_movies():
 
 @app.get("/")
 def index():
+    """Index page."""
     return {"IMDb_250": get_movies()}

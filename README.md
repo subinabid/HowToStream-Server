@@ -1,6 +1,17 @@
 # HowToStream-Server
 FastAPI server for **HowToStream**
 
+## Setup
+Open the `htsserver.code-workspace` file if you are using VS Code. The workspace will suggest that you install the recommended extensions. Install the extensions
+
+The project uses `pre-commit`to handle git hooks. 
+
+```shell
+pip install pre-commit
+pre-commit install
+```
+
+
 ## Requirements
 ```shell
 pip install fastapi

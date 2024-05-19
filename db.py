@@ -1,6 +1,7 @@
 """Database connection module."""
 
 import sqlite3
+from typing import Any
 
 
 class AppDb:
@@ -8,7 +9,7 @@ class AppDb:
         self.connection = sqlite3.connect("hts.db")
         self.cursor = self.connection.cursor()
 
-    def create_tables(self) -> list:
+    def create_tables(self) -> dict[str, Any]:
         """Create tables."""
         query_create_movies = """
             CREATE TABLE IF NOT EXISTS movies (
@@ -32,12 +33,12 @@ class AppDb:
             tables = self.cursor.fetchall()
             self.connection.commit()
 
-            return tables
+            return {"message": "Success", "tables": tables}
 
         except Exception as e:
-            return e
+            return {"message": "Failed to create tables", "error": e}
 
-    def add_movie(self, movie: str) -> None:
+    def add_movie(self, movie: str) -> dict[str, Any]:
         """Add a movie to the movies table if it does not exist."""
         query_to_check_movie = "SELECT * FROM movies WHERE title = ?"
         query_insert_movie = "INSERT INTO movies (title) VALUES (?)"
@@ -62,15 +63,15 @@ class AppDb:
                 "error": e,
             }
 
-    def add_movies(self, movies: list) -> None:
+    def add_movies(self, movies: list) -> dict[str, Any]:
         """Populate the movies table."""
 
-        result = list()
+        result: list[int] = list()
         try:
             for movie in movies:
                 info = self.add_movie(movie)
                 if "error" in info.keys():
-                    result.append("X")
+                    result.append(2)
                 else:
                     result.append(info["flag"])
 
@@ -84,7 +85,7 @@ class AppDb:
                 "error": e,
             }
 
-    def add_imdb_top_250(self) -> None:
+    def add_imdb_top_250(self) -> dict[str, Any]:
         """Add the IMDb top 250 movies to the database."""
         from scrapper import get_imdb_top_250
 
