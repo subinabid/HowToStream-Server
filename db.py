@@ -95,6 +95,8 @@ class AppDb:
 def main():
     app_db = AppDb()
     print("Initiating the database...")
+    print("Creating tables...")
+    print("The following tables were created (or already exists):")
     print(app_db.create_tables())
     print("Adding IMDb top 250 movies to the database...")
     print(app_db.add_imdb_top_250())
