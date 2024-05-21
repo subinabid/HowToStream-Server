@@ -4,7 +4,7 @@ FastAPI server for **HowToStream**
 ## Setup
 Open the `htsserver.code-workspace` file if you are using VS Code. The workspace will suggest that you install the recommended extensions. Install the extensions
 
-The project uses `pre-commit`to handle git hooks. 
+The project uses `pre-commit`to handle git hooks.
 
 ```shell
 pip install pre-commit
@@ -15,6 +15,8 @@ pre-commit install
 ## Requirements
 ```shell
 pip install fastapi
+cd common
+pip  install -e .
 ```
 
 ## Initiate database
@@ -26,10 +28,10 @@ python db.py
 
 You may have to run ```python3 db.py``` based on your machine setup. This initiates the db, creates the required tables and populate the `movies` table with IMDb top 250 movies. This will also create a `streams` table.
 
-Since the IMDb list is dynamic, if you run the command multiple times, it may add more movies to the list and the total rows in the `movies` table could be >250. This is not an error and can be ignored. 
+Since the IMDb list is dynamic, if you run the command multiple times, it may add more movies to the list and the total rows in the `movies` table could be >250. This is not an error and can be ignored.
 
 ## Running the development server
 ```shell
 fastapi dev main.py
 ```
-Open http://127.0.0.1:8000/docs in the browser. 
+Open http://127.0.0.1:8000/docs in the browser.

@@ -1,5 +1,7 @@
+"""FastAPI app."""
+
 from fastapi import FastAPI
-from db import AppDb
+from database.db import AppDb
 
 app = FastAPI()
 

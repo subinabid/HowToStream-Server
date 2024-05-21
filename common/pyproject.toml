@@ -1,0 +1,8 @@
+[project]
+name = "hts_essential"
+version = "0.1.0"
+authors = [{name = "Subin Abid", email = "io@sabid.in"}]
+description = "A collection of essential tools for working with HTS project."
+
+[tool.setuptools]
+packages = ["database", "helpers"]

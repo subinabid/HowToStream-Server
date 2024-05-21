@@ -2,11 +2,16 @@
 
 import sqlite3
 from typing import Any
+import os
 
 
 class AppDb:
+    """Database connection class."""
+
     def __init__(self):
-        self.connection = sqlite3.connect("hts.db")
+        """Initialize the database connection."""
+        db_path = os.path.join(os.path.dirname(__file__), "hts.db")
+        self.connection = sqlite3.connect(db_path)
         self.cursor = self.connection.cursor()
 
     def create_tables(self) -> dict[str, Any]:
@@ -65,7 +70,6 @@ class AppDb:
 
     def add_movies(self, movies: list) -> dict[str, Any]:
         """Populate the movies table."""
-
         result: list[int] = list()
         try:
             for movie in movies:
@@ -87,13 +91,14 @@ class AppDb:
 
     def add_imdb_top_250(self) -> dict[str, Any]:
         """Add the IMDb top 250 movies to the database."""
-        from scrapper import get_imdb_top_250
+        from helpers.scrapper import get_imdb_top_250
 
         movies = get_imdb_top_250()
         return self.add_movies(movies)
 
 
 def main():
+    """Initialize and populate the database."""
     app_db = AppDb()
     print("Initiating the database...")
     print("Creating tables...")
@@ -105,4 +110,5 @@ def main():
 
 
 if __name__ == "__main__":
+    """Run the main function."""
     main()

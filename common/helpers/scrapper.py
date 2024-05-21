@@ -9,8 +9,9 @@ def get_movie_names(s: str) -> list[str]:
     movie_list_raw = re.findall(r"<h3.*?>(.*?)</h3>", s)
     movies = []
     for movie in movie_list_raw:
-        space = movie.find(". ")
-        title = movie[space + 2 :]
+        space = movie.find(". ") + 2
+
+        title = movie[space:]
         movies.append(title)
 
     return movies
