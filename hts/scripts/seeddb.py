@@ -7,7 +7,9 @@ from typing import Any
 from scrapper import get_imdb_top_250
 
 sys.path.append("..")
-from hts.database import AppDb  # noqa: E402
+sys.path.append("../..")
+# TODO: replace ".." with os path
+from database import AppDb  # noqa: E402
 from main import db_path  # noqa: E402
 
 

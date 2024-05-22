@@ -2,15 +2,7 @@
 
 from fastapi import FastAPI
 from hts.database import AppDb
-import os
-
-# Configurations
-prod_db_path = os.path.join(os.path.dirname(__file__), "hts.db")
-test_db_path = os.path.join(os.path.dirname(__file__), "hts-test.db")
-
-# test or prod mode
-MODE = "test"  # or prod
-db_path = prod_db_path if MODE == "prod" else test_db_path
+from settings import db_path
 
 # Initialize the app
 app = FastAPI()
