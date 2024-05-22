@@ -11,19 +11,26 @@ pip install pre-commit
 pre-commit install
 ```
 
+We love unit tests
+```shell
+pip install pytest
+```
 
 ## Requirements
 ```shell
 pip install fastapi
-cd common
-pip  install -e .
 ```
+
+## Configuration
+In `main.py` set `MODE` to `test` or `prod` to switch between test and production modes. Default is test.
 
 ## Initiate database
 Sqlite is used for the project. If you are unsing the `hts.db` file in the repository, you can skip this step. You may also run the below command to setup a local copy.
 
 ```shell
-python db.py
+cd scripts
+python scripts/seeddb.py
+cd ..
 ```
 
 You may have to run ```python3 db.py``` based on your machine setup. This initiates the db, creates the required tables and populate the `movies` table with IMDb top 250 movies. This will also create a `streams` table.

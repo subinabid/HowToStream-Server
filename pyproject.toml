@@ -1,0 +1,5 @@
+[project]
+name = "hts"
+version = "0.1.0"
+authors = [{name = "Subin Abid", email = "io@sabid.in"}]
+description = "HTS project."

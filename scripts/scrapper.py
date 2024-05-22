@@ -4,9 +4,17 @@ from urllib.request import urlopen, Request
 import re
 
 
-def get_movie_names(s: str) -> list[str]:
-    """Get movie names from the raw HTML."""
-    movie_list_raw = re.findall(r"<h3.*?>(.*?)</h3>", s)
+def get_movie_names(movie_dump: str) -> list[str]:
+    """Get movie names from the raw HTML.
+
+    Args:
+        movie_dump (str): Raw HTML.
+
+    Returns:
+        list[str]: List of movie names.
+
+    """
+    movie_list_raw = re.findall(r"<h3.*?>(.*?)</h3>", movie_dump)
     movies = []
     for movie in movie_list_raw:
         space = movie.find(". ") + 2
@@ -18,7 +26,12 @@ def get_movie_names(s: str) -> list[str]:
 
 
 def get_imdb_top_250():
-    """Get the top 250 movies from IMDb."""
+    """Get the top 250 movies from IMDb.
+
+    Returns:
+        str: List of top 250 movies
+
+    """
     req = Request(
         "https://www.imdb.com/chart/top/", headers={"User-Agent": "Mozilla/5.0"}
     )
