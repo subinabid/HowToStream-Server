@@ -1,14 +1,16 @@
 """Create the db and seed data."""
 
+import os
 import sys
-
-# import argparse
 from typing import Any
 from scrapper import get_imdb_top_250
 
-sys.path.append("..")
-sys.path.append("../..")
-# TODO: replace ".." with os path
+
+file_location = os.path.dirname(__file__)
+one_level_up = file_location.removesuffix("/scripts")
+two_level_up = one_level_up.removesuffix("/hts")
+sys.path.append(one_level_up)
+sys.path.append(two_level_up)
 from database import AppDb  # noqa: E402
 from main import db_path  # noqa: E402
 

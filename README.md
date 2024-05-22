@@ -28,9 +28,7 @@ In `main.py` set `MODE` to `test` or `prod` to switch between test and productio
 Sqlite is used for the project. If you are unsing the `hts.db` file in the repository, you can skip this step. You may also run the below command to setup a local copy.
 
 ```shell
-cd scripts
-python scripts/seeddb.py
-cd ..
+python hts/scripts/seeddb.py
 ```
 
 You may have to run ```python3 db.py``` based on your machine setup. This initiates the db, creates the required tables and populate the `movies` table with IMDb top 250 movies. This will also create a `streams` table.
